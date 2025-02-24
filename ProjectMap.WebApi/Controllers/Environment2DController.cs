@@ -8,7 +8,6 @@ namespace ProjectMap.WebApi.Controllers;
 [Route("2DEnvironments")]
 public class Environment2DController : ControllerBase
 {
-    //Commend
     private readonly IEnvironment2DRepository _environment2DRepository;
     private readonly ILogger<Environment2DController> _logger;
 
