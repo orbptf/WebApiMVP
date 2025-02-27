@@ -4,6 +4,8 @@ using ProjectMap.WebApi.Interfaces;
 using ProjectMap.WebApi.Repositories;
 using ProjectMap.WebApi.Services; //toegevoegd door troubleshoot users
 
+//v1
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
