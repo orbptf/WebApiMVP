@@ -17,6 +17,10 @@ builder.Services.Configure<RouteOptions>(o => o.LowercaseUrls = true);
 var sqlConnectionString = builder.Configuration.GetValue<string>("SqlConnectionString");
 var sqlConnectionStringFound = !string.IsNullOrWhiteSpace(sqlConnectionString);
 
+//swagger
+
+builder.Services.AddOpenApi();
+builder.Services.AddSwaggerGen();
 
 
 
@@ -80,7 +84,11 @@ app.MapGet("/", () => $"The API is up . Connection string found: {(sqlConnection
 app.MapOpenApi();
 
 app.UseHttpsRedirection();
-
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
 
 
 
