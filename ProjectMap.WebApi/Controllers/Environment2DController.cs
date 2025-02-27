@@ -1,11 +1,13 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using ProjectMap.WebApi.Interfaces;
 using ProjectMap.WebApi.Models;
-using ProjectMap.WebApi.Repositories;
 
 namespace ProjectMap.WebApi.Controllers;
 
 [ApiController]
 [Route("2DEnvironments")]
+[Authorize] //mag alleen met login
 public class Environment2DController : ControllerBase
 {
     private readonly IEnvironment2DRepository _environment2DRepository;
