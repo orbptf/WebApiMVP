@@ -41,7 +41,7 @@ public class Environment2DController : ControllerBase
     {
         string usermail = User?.Identity.Name;
 
-        environment2D.UserMail = usermail;
+        environment2D.usermail = usermail;
 
         environment2D.Id = Guid.NewGuid();
         var createdEnvironment2D = await _environment2DRepository.InsertAsync(environment2D);

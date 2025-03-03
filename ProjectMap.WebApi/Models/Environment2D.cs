@@ -10,5 +10,5 @@ public class Environment2D
 
     public int MaxLength { get; set; }
 
-    public string UserMail { get; set; }
+    public string usermail { get; set; }
 }
