@@ -39,10 +39,6 @@ public class Environment2DController : ControllerBase
     [HttpPost(Name = "Create2Denvironment")]
     public async Task<ActionResult> Add(Environment2D environment2D)
     {
-        string usermail = User?.Identity.Name;
-
-        environment2D.usermail = usermail;
-
         environment2D.Id = Guid.NewGuid();
         var createdEnvironment2D = await _environment2DRepository.InsertAsync(environment2D);
         return Created();

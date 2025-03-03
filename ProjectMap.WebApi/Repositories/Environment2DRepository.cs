@@ -18,7 +18,7 @@ namespace ProjectMap.WebApi.Repositories
         {
             using (var sqlConnection = new SqlConnection(sqlConnectionString))
             {
-                var environmentId = await sqlConnection.ExecuteAsync("INSERT INTO [Environment2D] (Id, Name, MaxHeight, MaxLength) VALUES (@Id, @Name, @MaxHeight, @MaxLength)", environment2D);
+                var environmentId = await sqlConnection.ExecuteAsync("INSERT INTO [Environment2D] (Id, Name, MaxHeight, MaxLength, usermail) VALUES (@Id, @Name, @MaxHeight, @MaxLength, @usermail)", environment2D);
                 return environment2D;
             }
         }
@@ -46,7 +46,8 @@ namespace ProjectMap.WebApi.Repositories
                 await sqlConnection.ExecuteAsync("UPDATE [Environment2D] SET " +
                                                  "Name = @Name, " +
                                                  "MaxHeight = @Maxheight, " +
-                                                 "MaxLength = @MaxLength"
+                                                 "MaxLength = @MaxLength" +
+                                                 "usermail = @usermail"
                                                  , environment);
 
             }
