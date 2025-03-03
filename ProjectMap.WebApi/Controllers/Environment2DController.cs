@@ -40,7 +40,6 @@ public class Environment2DController : ControllerBase
     public async Task<ActionResult> Add(Environment2D environment2D)
     {
         environment2D.Id = Guid.NewGuid();
-
         var createdEnvironment2D = await _environment2DRepository.InsertAsync(environment2D);
         return Created();
     }
