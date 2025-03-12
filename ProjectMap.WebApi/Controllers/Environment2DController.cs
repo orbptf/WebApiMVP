@@ -43,7 +43,7 @@ public class Environment2DController : ControllerBase
         int maximumNumberOfCharacters = 25;
         int maximumAmountOfWorlds = 5;
 
-        List<Environment2D> userWorlds = await _environment2DRepository.ReadByUserMailAsync(environment2D.usermail);
+        List<Environment2D> userWorlds = await _environment2DRepository.ReadByUserMailAsync(environment2D.usermail) ?? new List<Environment2D>();
 
         if (userWorlds.Count() >= maximumAmountOfWorlds)
         {

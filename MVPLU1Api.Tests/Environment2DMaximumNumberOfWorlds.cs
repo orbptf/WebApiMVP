@@ -1,11 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Moq;
 using ProjectMap.WebApi.Controllers;
 using ProjectMap.WebApi.Interfaces;
 using ProjectMap.WebApi.Models;
-using Microsoft.Extensions.Logging;
-
-namespace MVPLU1Api.Tests;
 
 [TestClass]
 public class Environment2DMaximumNumberOfWorlds
@@ -43,5 +41,7 @@ public class Environment2DMaximumNumberOfWorlds
                 Assert.IsInstanceOfType(result, typeof(BadRequestObjectResult));
             }
         }
+
+        environmentRepository.Verify(r => r.ReadByUserMailAsync(userMail), Times.Exactly(6));
     }
 }
