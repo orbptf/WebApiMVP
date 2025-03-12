@@ -71,6 +71,7 @@ namespace ProjectMap.WebApi.Repositories
         {
             using (var sqlConnection = new SqlConnection(sqlConnectionString))
             {
+                await sqlConnection.ExecuteAsync("DELETE FROM [Object2D] WHERE EnvironmentId = @Id", new { id });
                 await sqlConnection.ExecuteAsync("DELETE FROM [Environment2D] WHERE Id = @Id", new { id });
             }
         }
