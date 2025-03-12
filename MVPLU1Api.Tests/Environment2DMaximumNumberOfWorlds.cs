@@ -27,15 +27,16 @@ public class Environment2DMaximumNumberOfWorlds
         {
             Environment2D newWorld = new Environment2D { Name = $"World {i}", usermail = userMail };
 
+            // Zorg ervoor dat de mock nooit null retourneert
             environmentRepository.Setup(r => r.ReadByUserMailAsync(userMail))
-                .ReturnsAsync(new List<Environment2D>(userWorlds)); // Mock de database
+                .ReturnsAsync(userWorlds ?? new List<Environment2D>());
 
             ActionResult result = await controller.Add(newWorld);
 
             if (i <= 5)
             {
                 Assert.IsInstanceOfType(result, typeof(CreatedResult));
-                userWorlds.Add(newWorld); // Simuleer dat de wereld wordt opgeslagen
+                userWorlds.Add(newWorld);
             }
             else
             {

@@ -40,30 +40,3 @@ public class Environment2DInvalidNameTest
     }
 }
 
-
-    //[TestMethod]
-    //public async Task Get_EnvironmentFromOtherUser_Returns404NotFound()
-    //{
-    //    // Arrange
-    //    // Zorgen dat mijn repo geen resultaat geeft
-    //    var userId1 = Guid.NewGuid().ToString();
-    //    var userId2 = Guid.NewGuid().ToString();
-    //    var environmentId = Guid.NewGuid();
-    //    var environmentRepository = new Mock<IEnvironmentRepository>();
-    //    var objectRepository = new Mock<IObjectRepository>();
-    //    var userRepository = new Mock<IAuthenticationService>();
-
-    //    userRepository.Setup(x => x.GetCurrentAuthenticatedUserId()).Returns(userId1);
-    //    environmentRepository.Setup(x => x.ReadAsync(environmentId)).ReturnsAsync(new Environment2D { OwnerUserId = userId2 });
-
-
-    //    var controller = new EnvironmentsController(environmentRepository.Object, objectRepository.Object, userRepository.Object);
-
-    //    // Act
-    //    var response = await controller.GetByIdAsync(environmentId);
-
-    //    // Assert
-    //    Assert.IsInstanceOfType(response.Result, out NotFoundObjectResult notFoundObjectResult);
-
-    //}
-
