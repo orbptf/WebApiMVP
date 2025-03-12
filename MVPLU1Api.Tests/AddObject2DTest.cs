@@ -12,7 +12,7 @@ public class AddObject2DTest
     {
         // Arrange
         var object2DRepository = new Mock<IObject2DRepository>();
-        var newObject = new Object2D { Id = Guid.NewGuid(), Name = "TestObject", EnvironmentId = Guid.NewGuid() };
+        var newObject = new Object2D { Id = Guid.NewGuid(), PrefabId = "TestObject", EnvironmentId = Guid.NewGuid() };
 
         // Act
         object2DRepository.Object.InsertAsync(newObject);

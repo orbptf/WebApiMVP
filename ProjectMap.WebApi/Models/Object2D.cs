@@ -19,5 +19,4 @@ public class Object2D
     public float RotationZ { get; set; }
 
     public int SortingLayer { get; set; }
-    public string Name { get; set; }
 }
