@@ -18,6 +18,6 @@ public class AddObject2DTest
         object2DRepository.Object.InsertAsync(newObject);
 
         // Assert
-        object2DRepository.Verify(repo => repo.InsertAsync(It.IsAny<Object2D>()), Times.Once);
+        object2DRepository.Verify(repository => repository.InsertAsync(It.IsAny<Object2D>()), Times.Once);
     }
 }
