@@ -31,6 +31,20 @@ namespace ProjectMap.WebApi.Repositories
             }
         }
 
+        // Zelf toegevoegd om uiteindelijk in de api te kunnen blokkeren dat ze niet meer dan 5 mailadressen kunnen aanmaken.
+        public async Task<List<Environment2D>> ReadByUserMailAsync(string userMail)
+        {
+            using (var sqlConnection = new SqlConnection(sqlConnectionString))
+            {
+                await sqlConnection.OpenAsync();
+
+                var query = "SELECT * FROM Environment2D WHERE UserMail = @UserMail";
+                var result = await sqlConnection.QueryAsync<Environment2D>(query, new { UserMail = userMail });
+
+                return result.ToList();
+            }
+        }
+
         public async Task<IEnumerable<Environment2D>> ReadAsync()
         {
             using (var sqlConnection = new SqlConnection(sqlConnectionString))

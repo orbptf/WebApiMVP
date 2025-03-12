@@ -39,7 +39,24 @@ public class Environment2DController : ControllerBase
     [HttpPost(Name = "Create2Denvironment")]
     public async Task<ActionResult> Add(Environment2D environment2D)
     {
+        int minimalNumberOfCharacters = 1;
+        int maximumNumberOfCharacters = 25;
+        int maximumAmountOfWorlds = 5;
+
+        List<Environment2D> userWorlds = await _environment2DRepository.ReadByUserMailAsync(environment2D.usermail);
+
+        if (userWorlds.Count() >= maximumAmountOfWorlds)
+        {
+            return BadRequest("Je kunt niet meer dan 5 werelden aanmaken");
+        }
+
+        if (environment2D.Name.Length < 1 || environment2D.Name.Length > 25)
+        {
+            return BadRequest($"De naam {environment2D.Name} moet minmaal {minimalNumberOfCharacters} en maximaal {maximumNumberOfCharacters} bevatten.");
+        }
+
         environment2D.Id = Guid.NewGuid();
+        
         var createdEnvironment2D = await _environment2DRepository.InsertAsync(environment2D);
         return Created();
     }
