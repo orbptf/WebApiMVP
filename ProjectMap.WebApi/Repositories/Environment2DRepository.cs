@@ -59,8 +59,8 @@ namespace ProjectMap.WebApi.Repositories
             {
                 await sqlConnection.ExecuteAsync("UPDATE [Environment2D] SET " +
                                                  "Name = @Name, " +
-                                                 "MaxHeight = @Maxheight, " +
-                                                 "MaxLength = @MaxLength" +
+                                                 "MaxHeight = @MaxHeight, " +
+                                                 "MaxLength = @MaxLength, " +
                                                  "usermail = @usermail"
                                                  , environment);
 
