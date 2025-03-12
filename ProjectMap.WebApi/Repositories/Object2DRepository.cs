@@ -18,7 +18,7 @@ namespace ProjectMap.WebApi.Repositories
         {
             using (var sqlConnection = new SqlConnection(sqlConnectionString))
             {
-                var environmentId = await sqlConnection.ExecuteAsync("INSERT INTO [Object2D] (Id, EnvironmentId, PrefabId, PositionX, PositionY, ScaleX, ScaleY, RotationZ, SortingLayer) VALUES (@Id, @EnvironmentId, @PrefabId, @PositionX, @PositionY, @ScaleX, @ScaleY, @RotationZ, @SortingLayer)", object2D);
+                var environmentId = await sqlConnection.ExecuteAsync("INSERT INTO [Object2D] (Id, PrefabId, PositionX, PositionY, ScaleX, ScaleY, RotationZ, SortingLayer) VALUES (@Id, @PrefabId, @PositionX, @PositionY, ScaleX, ScaleY, RotationZ, SortingLayer)", object2D);
                 return object2D;
             }
         }
@@ -60,34 +60,6 @@ namespace ProjectMap.WebApi.Repositories
             using (var sqlConnection = new SqlConnection(sqlConnectionString))
             {
                 await sqlConnection.ExecuteAsync("DELETE FROM [Object2D] WHERE Id = @Id", new { id });
-            }
-        }
-
-
-
-
-
-        public async Task<IEnumerable<Object2D>> ReadByEnvironmentIdAsync(Guid environmentId)
-        {
-            // Maak een verbinding met de database (using zorgt dat deze na afloop netjes sluit)
-            using (var sqlConnection = new SqlConnection(sqlConnectionString))
-            {
-                // Dit is de SQL die we willen uitvoeren.
-                // We halen alle rijen op uit [Object2D] waar de EnvironmentId gelijk is aan @EnvId
-                string sqlQuery = @"SELECT * FROM [Object2D] WHERE EnvironmentId = @EnvironmentId";
-
-                // Hier maken we een 'parameters-object' voor de query.
-                // Daardoor weet Dapper dat @EnvId in de query overeenkomt met de waarde van environmentId.
-                var parameters = new
-                {
-                    EnvironmentId = environmentId
-                };
-
-                // Voer de query asynchroon uit en parse de resultaten als een lijst van Object2D
-                IEnumerable<Object2D> object2Ds = await sqlConnection.QueryAsync<Object2D>(sqlQuery, parameters);
-
-                // Geef de lijst terug aan de aanroeper van deze methode
-                return object2Ds;
             }
         }
 
